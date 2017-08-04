@@ -1,0 +1,23 @@
+{
+  "name": "browservizjs",
+  "version": "1.0.0",
+  "description": "The Javascript (browser) end of websocket, 4-field JSON messaging, companion to R package BrowserViz",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paul-shannon/BrowserVizJS.git"
+  },
+  "keywords": [
+    "messaging",
+    "R"
+  ],
+  "author": "Paul Shannon <paul.thurmond.shannon@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paul-shannon/BrowserVizJS/issues"
+  },
+  "homepage": "https://github.com/paul-shannon/BrowserVizJS#readme"
+}
