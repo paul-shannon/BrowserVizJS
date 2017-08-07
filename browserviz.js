@@ -41,7 +41,6 @@ var BrowserViz = {
 getName: function()
 {
     return(this.name);
-
 },
 //----------------------------------------------------------------------------------------------------
 setupSocket: function(socket)
@@ -49,9 +48,9 @@ setupSocket: function(socket)
   try {
      socket.onopen = function() {
         console.log("=== BrowserViz.js, websocket connection now open.");
-        for(var f=0; f < socketConnectedFunctions.length; f++){
+        for(var f=0; f < this.socketConnectedFunctions.length; f++){
            console.log("calling the next sockectConnectedFunction");
-           socketConnectedFunctions[f]();
+           this.socketConnectedFunctions[f]();
            } // for f
         } // socket.onopen
 
@@ -75,13 +74,13 @@ setupSocket: function(socket)
 //----------------------------------------------------------------------------------------------------
 addSocketConnectedFunction: function (func)
 {
-   socketConnectedFunctions.push(func)
+   this.socketConnectedFunctions.push(func)
 
 }, // addSocketConnectedFunction
 //----------------------------------------------------------------------------------------------------
 getSocketConnectedFunctions: function ()
 {
-   return(socketConnectedFunctions)
+   return(this.socketConnectedFunctions)
 
 }, // getSocketConnectedFunction
 //----------------------------------------------------------------------------------------------------
@@ -101,18 +100,18 @@ addOnDocumentReadyFunction: function (func)
    console.log("   typeof(func): " + typeof(func));
    //console.log(func);
 
-   onDocumentReadyFunctions.push(func)
+   this.onDocumentReadyFunctions.push(func)
 
-   console.log("== after push, count: " + onDocumentReadyFunctions.length);
+   console.log("== after push, count: " + this.onDocumentReadyFunctions.length);
    console.log(func);
    //console.log("func, stored");
-   //console.log(onDocumentReadyFunctions[0]);
+   //console.log(this.onDocumentReadyFunctions[0]);
 
 }, // addOnDocumentReadyFunction
 //----------------------------------------------------------------------------------------------------
 getOnDocumentReadyFunctions: function ()
 {
-   return(onDocumentReadyFunctions)
+   return(this.onDocumentReadyFunctions)
 
 }, // getOnDocumentReadyFunctions
 //----------------------------------------------------------------------------------------------------
@@ -130,9 +129,9 @@ runOnDocumentReadyFunctions: function ()
 initializeWebSocket: function ()
 {
    console.log("browserViz.js, initializeWebSocket, uri: " +
-               socketURI);
-   socket = new WebSocket(socketURI);
-   socket = setupSocket(socket);
+               this.socketURI);
+   var socket = new WebSocket(this.socketURI);
+   this.socket = setupSocket(socket);
 
 }, // initializeWebSocket
 //----------------------------------------------------------------------------------------------------
