@@ -45,19 +45,21 @@ getName: function()
 //----------------------------------------------------------------------------------------------------
 setupSocket: function(socket)
 {
+  var app = this;
+
   try {
      socket.onopen = function() {
         console.log("=== BrowserViz.js, websocket connection now open.");
-        for(var f=0; f < this.socketConnectedFunctions.length; f++){
-           console.log("calling the next sockectConnectedFunction");
-           this.socketConnectedFunctions[f]();
-           } // for f
+        //for(var f=0; f < this.socketConnectedFunctions.length; f++){
+        //   console.log("calling the next sockectConnectedFunction");
+        //   this.socketConnectedFunctions[f]();
+        //   } // for f
         } // socket.onopen
 
      socket.onmessage = function got_packet(msg) {
         var msg = JSON.parse(msg.data)
         console.log("=== BrowserViz.js, message received: " + msg.cmd);
-        dispatchMessage(msg)
+        app.dispatchMessage(msg)
         } // socket.onmessage, got_packet
 
      socket.onclose = function(){
