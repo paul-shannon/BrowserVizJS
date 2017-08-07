@@ -88,11 +88,12 @@ getSocketConnectedFunctions: function ()
 //----------------------------------------------------------------------------------------------------
 setupBasicMessageHandlers: function ()
 {
-  this.addMessageHandler("ready", this.ready)
-  this.addMessageHandler("getBrowserInfo", this.getBrowserInfo)
-  this.addMessageHandler("getWindowTitle", this.getWindowTitle)
-  this.addMessageHandler("setWindowTitle", this.setWindowTitle)
-  this.addMessageHandler("getWindowSize",  this.getWindowSize)
+   var app = this;
+    this.addMessageHandler("ready", function(){this.ready(app)});
+   this.addMessageHandler("getBrowserInfo", this.getBrowserInfo);
+   this.addMessageHandler("getWindowTitle", this.getWindowTitle);
+   this.addMessageHandler("setWindowTitle", this.setWindowTitle);
+   this.addMessageHandler("getWindowSize",  this.getWindowSize);
 
 }, // setupBasicMessageHandlers
 //----------------------------------------------------------------------------------------------------
@@ -198,16 +199,18 @@ intersectionOfArrays: function (a, b)
 
 }, // intersectionOfArrays
 //----------------------------------------------------------------------------------------------------
-ready: function (msg)
+ready: function (app)
 {
    console.log("=== browserViz, running ready function");
-   return_msg = {cmd: msg.callback, status: "success", callback: "", payload: "ready"};
+   //console.log("   incoming msg:")
+   //console.log(msg)
+   return_msg = {cmd: "handleResponse", status: "success", callback: "", payload: "ready"};
    console.log("about to send...");
    console.log(return_msg);
-    console.log("ready's notion of this:")
-    console.log(this)
+   console.log("ready's notion of this:")
+   console.log(app)
 
-   this.send(return_msg);
+   app.send(return_msg);
 
 }, // ready
 //----------------------------------------------------------------------------------------------------
