@@ -1,6 +1,6 @@
 {
   "name": "browservizjs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "The Javascript (browser) end of websocket, 4-field JSON messaging, companion to R package BrowserViz",
   "main": "browserviz.js",
   "scripts": {
