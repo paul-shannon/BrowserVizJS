@@ -206,7 +206,7 @@ start: function ()
      var f = app.runOnDocumentReadyFunctions[i];
      $(f);
      }
-  # $(document).ready(app.runOnDocumentReadyFunctions);
+  //$(document).ready(app.runOnDocumentReadyFunctions);
   console.log("=== concluding bv.start");
 
 },  // start
