@@ -198,19 +198,6 @@ intersectionOfArrays: function (a, b)
 
 }, // intersectionOfArrays
 //----------------------------------------------------------------------------------------------------
-start: function ()
-{
-  var app = this;
-  console.log("=== starting bv.start");
-  for(var i=0; i < app.runOnDocumentReadyFunctions.length; i++){
-     var f = app.runOnDocumentReadyFunctions[i];
-     $(f);
-     }
-  //$(document).ready(app.runOnDocumentReadyFunctions);
-  console.log("=== concluding bv.start");
-
-},  // start
-//----------------------------------------------------------------------------------------------------
 ready: function (msg)
 {
    console.log("=== browserViz, running ready function");
@@ -264,11 +251,26 @@ getWindowSize: function (msg)
 //----------------------------------------------------------------------------------------------------
 init: function ()
 {
+   console.log("=== starting bv.init")
    this.socketURI = window.location.href.replace("http://", "ws://");
    this.setupBasicMessageHandlers();
    this.initializeWebSocket()
+   console.log("=== concluding bv.init")
 
-} // init
+}, // init
+//----------------------------------------------------------------------------------------------------
+start: function ()
+{
+  console.log("=== starting bv.start");
+  var app = this;
+  for(var i=0; i < app.runOnDocumentReadyFunctions.length; i++){
+     var f = app.runOnDocumentReadyFunctions[i];
+     $(f);
+     }
+  //$(document).ready(app.runOnDocumentReadyFunctions);
+  console.log("=== concluding bv.start");
+
+}  // start
 //----------------------------------------------------------------------------------------------------
 }; // BrowserViz object
 
