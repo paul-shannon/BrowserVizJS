@@ -106,7 +106,7 @@ addOnDocumentReadyFunction: function (func)
    this.onDocumentReadyFunctions.push(func)
 
    console.log("== after push, count: " + this.onDocumentReadyFunctions.length);
-   console.log(func);
+   //console.log(func);
    //console.log("func, stored");
    //console.log(this.onDocumentReadyFunctions[0]);
 
@@ -270,11 +270,18 @@ start: function ()
 {
   console.log("=== starting bv.start");
   var app = this;
-  for(var i=0; i < app.runOnDocumentReadyFunctions.length; i++){
-     var f = app.runOnDocumentReadyFunctions[i];
-     $(f);
+  var onReadyFunctions = app.getOnDocumentReadyFunctions()
+  console.log(" onReadyFunction count: " + onReadyFunctions.length)
+
+  for(var i=0; i < onReadyFunctions.length; i++){
+     var f = onReadyFunctions[i];
+     console.log("about to run next onReady function")
+     f();
+     console.log(" after running next onReady function")
      }
+
   //$(document).ready(app.runOnDocumentReadyFunctions);
+
   console.log("=== concluding bv.start");
 
 }  // start
