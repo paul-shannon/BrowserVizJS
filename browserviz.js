@@ -144,18 +144,18 @@ getSocket: function ()
 //----------------------------------------------------------------------------------------------------
 addMessageHandler: function (cmd, func)
 {
-  if(cmd in dispatchOptions){
-     dispatchOptions[cmd].push(func)
+  if(cmd in this.dispatchOptions){
+     this.dispatchOptions[cmd].push(func)
      }
   else{
-     dispatchOptions[cmd] = [func]
+     this.dispatchOptions[cmd] = [func]
      }
 
 }, // addMessageHandler
 //----------------------------------------------------------------------------------------------------
 getRegisteredHandlers: function ()
 {
-   return(Object.keys(dispatchOptions));
+   return(Object.keys(this.dispatchOptions));
 
 }, // getRegisteredHandlers
 //----------------------------------------------------------------------------------------------------
@@ -165,11 +165,11 @@ dispatchMessage: function (msg)
    console.log("=== BrowserViz.js, dispatchMessage: " + cmd);
    var status = msg.status;
 
-   if(Object.keys(dispatchOptions).indexOf(cmd) == -1){
+   if(Object.keys(this.dispatchOptions).indexOf(cmd) == -1){
       console.log("unrecognized socket request: " + msg.cmd);
       }
    else{
-     var funcs = dispatchOptions[cmd];
+     var funcs = this.dispatchOptions[cmd];
       for(var i=0; i < funcs.length; i++){
          console.log("  dispatching for " + msg.cmd);
          funcs[i](msg); // dispatchOptions[msg.cmd](msg)
