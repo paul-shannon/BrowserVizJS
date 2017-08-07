@@ -86,11 +86,11 @@ getSocketConnectedFunctions: function ()
 //----------------------------------------------------------------------------------------------------
 setupBasicMessageHandlers: function ()
 {
-  this.addMessageHandler("ready", ready)
-  this.addMessageHandler("getBrowserInfo", getBrowserInfo)
-  this.addMessageHandler("getWindowTitle", getWindowTitle)
-  this.addMessageHandler("setWindowTitle", setWindowTitle)
-  this.addMessageHandler("getWindowSize",  getWindowSize)
+  this.addMessageHandler("ready", this.ready)
+  this.addMessageHandler("getBrowserInfo", this.getBrowserInfo)
+  this.addMessageHandler("getWindowTitle", this.getWindowTitle)
+  this.addMessageHandler("setWindowTitle", this.setWindowTitle)
+  this.addMessageHandler("getWindowSize",  this.getWindowSize)
 
 }, // setupBasicMessageHandlers
 //----------------------------------------------------------------------------------------------------
