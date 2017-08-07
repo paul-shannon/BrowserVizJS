@@ -89,7 +89,7 @@ getSocketConnectedFunctions: function ()
 setupBasicMessageHandlers: function ()
 {
    var app = this;
-    this.addMessageHandler("ready", function(){this.ready(app)});
+   this.addMessageHandler("ready", function(){app.ready()});
    this.addMessageHandler("getBrowserInfo", this.getBrowserInfo);
    this.addMessageHandler("getWindowTitle", this.getWindowTitle);
    this.addMessageHandler("setWindowTitle", this.setWindowTitle);
@@ -199,8 +199,9 @@ intersectionOfArrays: function (a, b)
 
 }, // intersectionOfArrays
 //----------------------------------------------------------------------------------------------------
-ready: function (app)
+ready: function ()
 {
+    var app = this;
    console.log("=== browserViz, running ready function");
    //console.log("   incoming msg:")
    //console.log(msg)
