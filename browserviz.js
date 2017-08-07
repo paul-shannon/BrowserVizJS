@@ -181,8 +181,7 @@ dispatchMessage: function (msg)
 send: function (msg)
 {
    console.log("=== BrowserViz send: " + msg.cmd);
-
-   socket.send(JSON.stringify(msg));
+   this.socket.send(JSON.stringify(msg));
 
 },  // send
 //----------------------------------------------------------------------------------------------------
@@ -205,7 +204,7 @@ ready: function (msg)
    return_msg = {cmd: msg.callback, status: "success", callback: "", payload: "ready"};
    console.log("about to send...");
    console.log(return_msg);
-   send(return_msg);
+   this.send(return_msg);
 
 }, // ready
 //----------------------------------------------------------------------------------------------------
