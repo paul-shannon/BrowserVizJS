@@ -204,6 +204,9 @@ ready: function (msg)
    return_msg = {cmd: msg.callback, status: "success", callback: "", payload: "ready"};
    console.log("about to send...");
    console.log(return_msg);
+    console.log("ready's notion of this:")
+    console.log(this)
+
    this.send(return_msg);
 
 }, // ready
