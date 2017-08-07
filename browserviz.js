@@ -202,8 +202,12 @@ start: function ()
 {
   var app = this;
   console.log("=== starting bv.start");
-  $(document).ready(app.runOnDocumentReadyFunctions);
-  console.log("=== starting bv.start");
+  for(var i=0; i < app.runOnDocumentReadyFunctions.length; i++){
+     var f = app.runOnDocumentReadyFunctions[i];
+     $(f);
+     }
+  # $(document).ready(app.runOnDocumentReadyFunctions);
+  console.log("=== concluding bv.start");
 
 },  // start
 //----------------------------------------------------------------------------------------------------
