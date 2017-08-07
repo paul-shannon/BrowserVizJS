@@ -128,10 +128,9 @@ runOnDocumentReadyFunctions: function ()
 //----------------------------------------------------------------------------------------------------
 initializeWebSocket: function ()
 {
-   console.log("browserViz.js, initializeWebSocket, uri: " +
-               this.socketURI);
+   console.log("browserViz.js, initializeWebSocket, uri: " + this.socketURI);
    var socket = new WebSocket(this.socketURI);
-   this.socket = setupSocket(socket);
+   this.socket = this.setupSocket(socket);
 
 }, // initializeWebSocket
 //----------------------------------------------------------------------------------------------------
