@@ -201,7 +201,7 @@ intersectionOfArrays: function (a, b)
 start: function ()
 {
   console.log("=== starting bv.start");
-  $(document).ready(runOnDocumentReadyFunctions);
+  $(document).ready(this.runOnDocumentReadyFunctions);
   console.log("=== starting bv.start");
 
 },  // start
