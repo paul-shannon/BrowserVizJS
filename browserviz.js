@@ -210,13 +210,13 @@ ready: function (msg)
 //----------------------------------------------------------------------------------------------------
 getBrowserInfo: function (msg)
 {
-   send({cmd: msg.callback, status: "success", callback: "", payload: navigator.userAgent});
+   this.send({cmd: msg.callback, status: "success", callback: "", payload: navigator.userAgent});
 
 }, // getBrowserInfo
 //----------------------------------------------------------------------------------------------------
 getWindowTitle: function (msg)
 {
-   send({cmd: msg.callback, status: "success", callback: "",payload: window.document.title});
+   this.send({cmd: msg.callback, status: "success", callback: "",payload: window.document.title});
 
 }, // getWindowTitle
 //----------------------------------------------------------------------------------------------------
@@ -235,7 +235,7 @@ setWindowTitle: function (msg)
       document.getElementById("browserVizDiv").innerHTML = html;
       }
 
-   send({cmd: msg.callback, status: "success", callback: "", payload: window.document.title});
+   this.send({cmd: msg.callback, status: "success", callback: "", payload: window.document.title});
 
 }, // setWindowTitle
 //----------------------------------------------------------------------------------------------------
@@ -245,7 +245,7 @@ getWindowSize: function (msg)
    var height = $(window).height()
    return_msg = {cmd: msg.callback, status: "success",
                  callback: "", payload: JSON.stringify({width:width, height: height})};
-   send(return_msg);
+   this.send(return_msg);
 
 }, // getWindowSize
 //----------------------------------------------------------------------------------------------------
