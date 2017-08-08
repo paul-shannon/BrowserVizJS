@@ -90,10 +90,10 @@ setupBasicMessageHandlers: function ()
 {
    var app = this;
    this.addMessageHandler("ready", function(){app.ready()});
-   this.addMessageHandler("getBrowserInfo", this.getBrowserInfo);
-   this.addMessageHandler("getWindowTitle", this.getWindowTitle);
-   this.addMessageHandler("setWindowTitle", this.setWindowTitle);
-   this.addMessageHandler("getWindowSize",  this.getWindowSize);
+   this.addMessageHandler("getBrowserInfo", app.getBrowserInfo);
+   this.addMessageHandler("getWindowTitle", app.getWindowTitle);
+   this.addMessageHandler("setWindowTitle", app.setWindowTitle);
+   this.addMessageHandler("getWindowSize",  app.getWindowSize);
 
 }, // setupBasicMessageHandlers
 //----------------------------------------------------------------------------------------------------
@@ -229,6 +229,9 @@ getWindowTitle: function (msg)
 //----------------------------------------------------------------------------------------------------
 setWindowTitle: function (msg)
 {
+   console.log("==== entering browserviz.setWindowTitle, whose notion of this is:")
+   console.log(this);
+   console.log("==== msg:")
    console.log(msg)
    var payload = msg.payload;
    console.log(payload)
