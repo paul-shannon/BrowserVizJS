@@ -89,13 +89,32 @@ getSocketConnectedFunctions: function ()
 setupBasicMessageHandlers: function ()
 {
    var app = this;
-   this.addMessageHandler("ready", function(){app.ready()});
-   this.addMessageHandler("getBrowserInfo", app.getBrowserInfo);
-   this.addMessageHandler("getWindowTitle", app.getWindowTitle);
-    var boundSetWindowTitle = app.setWindowTitle.bind(app);
-    this.addMessageHandler("setWindowTitle", boundSetWindowTitle)
-   //this.addMessageHandler("setWindowTitle", app.setWindowTitle);
-   this.addMessageHandler("getWindowSize",  app.getWindowSize);
+
+     // when the message handling functions are called, that happens in a different
+     // context: see dispatchMessage.   we want each of these handlers to
+     // have ready access to the app, our instance of the enclosing BrowserViz object,
+     // to which all of these functions belong.
+     // but the implicit -this- reference is always to the object which invokes the
+     // the function.
+     // this leads to loss of this, its replacement by the immediate invoker
+     // the weird solution to this weird problem is to bind the app -this- (a reference
+     // to the BrowserViz object) to the function
+
+   var boundReady = app.ready.bind(app)
+   this.addMessageHandler("ready", boundReady)
+   //this.addMessageHandler("ready", function(){app.ready()});
+
+   var boundGetBrowserInfo = app.getBrowserInfo.bind(app);
+   this.addMessageHandler("getBrowserInfo", boundGetBrowserInfo)
+
+   var boundGetWindowTitle = app.getWindowTitle.bind(app);
+   this.addMessageHandler("getWindowTitle", boundGetWindowTitle);
+
+   var boundSetWindowTitle = app.setWindowTitle.bind(app);
+   this.addMessageHandler("setWindowTitle", boundSetWindowTitle)
+
+   var boundGetWindowSize = app.getWindowSize.bind(app);
+   this.addMessageHandler("getWindowSize",  boundGetWindowSize);
 
 }, // setupBasicMessageHandlers
 //----------------------------------------------------------------------------------------------------
@@ -173,11 +192,11 @@ dispatchMessage: function (msg)
       }
    else{
      var funcs = this.dispatchOptions[cmd];
-      for(var i=0; i < funcs.length; i++){
-         console.log("  dispatching for " + msg.cmd);
-         funcs[i](msg); // dispatchOptions[msg.cmd](msg)
-         } // for i
-      }
+     for(var i=0; i < funcs.length; i++){  // may be more than one function to dispatch
+        console.log("  dispatching for " + msg.cmd);
+        funcs[i](msg); // dispatchOptions[msg.cmd](msg)
+        } // for i
+     } // else
 
 },  // dispatchMessage
 //----------------------------------------------------------------------------------------------------
