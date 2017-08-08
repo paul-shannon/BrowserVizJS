@@ -92,7 +92,9 @@ setupBasicMessageHandlers: function ()
    this.addMessageHandler("ready", function(){app.ready()});
    this.addMessageHandler("getBrowserInfo", app.getBrowserInfo);
    this.addMessageHandler("getWindowTitle", app.getWindowTitle);
-   this.addMessageHandler("setWindowTitle", app.setWindowTitle);
+    var boundSetWindowTitle = app.setWindowTitle.bind(app);
+    this.addMessageHandler("setWindowTitle", boundSetWindowTitle)
+   //this.addMessageHandler("setWindowTitle", app.setWindowTitle);
    this.addMessageHandler("getWindowSize",  app.getWindowSize);
 
 }, // setupBasicMessageHandlers
@@ -201,7 +203,7 @@ intersectionOfArrays: function (a, b)
 //----------------------------------------------------------------------------------------------------
 ready: function ()
 {
-    var app = this;
+   var app = this;
    console.log("=== browserViz, running ready function");
    //console.log("   incoming msg:")
    //console.log(msg)
