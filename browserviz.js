@@ -143,10 +143,10 @@ runOnDocumentReadyFunctions: function ()
 {
   console.log("23 jan 1:45p")
 
-  debugger;
-  var funcs = this.onDocumentReadyFunctions
+  var funcs = hub.onDocumentReadyFunctions
   console.log(" doc ready functions, count: " + funcs.length)
 
+  debugger;
 
   for (var f = 0; f < funcs.length; f++) {
      console.log("local BrowserViz, calling on ready function");
