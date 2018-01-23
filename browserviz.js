@@ -141,9 +141,11 @@ getOnDocumentReadyFunctions: function ()
 //----------------------------------------------------------------------------------------------------
 runOnDocumentReadyFunctions: function ()
 {
-  console.log("23 jan 1:23p")
+  console.log("23 jan 1:33p")
 
   var funcs = this.onDocumentReadyFunctions
+  console.log(" doc ready functions, count: " + funcs.length)
+
 
   for (var f = 0; f < funcs.length; f++) {
      console.log("local BrowserViz, calling on ready function");
@@ -294,7 +296,7 @@ init: function ()
 //----------------------------------------------------------------------------------------------------
 start: function ()
 {
-  console.log("=== starting bv.start");
+  console.log("=== starting bv.start, state? " + document.readyState);
   var hub = this;
   $(document).ready(this.runOnDocumentReadyFunctions);
 
