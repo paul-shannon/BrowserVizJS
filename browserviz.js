@@ -302,9 +302,9 @@ start: function ()
 //----------------------------------------------------------------------------------------------------
 runOnDocumentReadyFunctions: function()
 {
-  console.log("=== ~/github/browservizjs/browserviz.js, runOnDocumentReadyFunctions, readyState: " + document.readyState);
+  console.log("=== ~/github/browservizjs/browserviz.js, 118p, runOnDocumentReadyFunctions, readyState: " + document.readyState);
   var hub = this;
-  var onReadyFunctions = getOnDocumentReadyFunctions()
+  var onReadyFunctions = this.getOnDocumentReadyFunctions()
   console.log(" onReadyFunction count: " + onReadyFunctions.length)
 
   for(var i=0; i < onReadyFunctions.length; i++){
