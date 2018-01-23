@@ -141,8 +141,9 @@ getOnDocumentReadyFunctions: function ()
 //----------------------------------------------------------------------------------------------------
 runOnDocumentReadyFunctions: function ()
 {
-  console.log("23 jan 1:33p")
+  console.log("23 jan 1:45p")
 
+  debugger;
   var funcs = this.onDocumentReadyFunctions
   console.log(" doc ready functions, count: " + funcs.length)
 
