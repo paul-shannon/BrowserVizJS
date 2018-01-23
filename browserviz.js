@@ -141,7 +141,9 @@ getOnDocumentReadyFunctions: function ()
 //----------------------------------------------------------------------------------------------------
 runOnDocumentReadyFunctions: function ()
 {
-  var funcs = getOnDocumentReadyFunctions()
+  console.log("23 jan 1:08p")
+
+  var funcs = this.getOnDocumentReadyFunctions()
 
   for (var f = 0; f < funcs.length; f++) {
      console.log("local BrowserViz, calling on ready function");
