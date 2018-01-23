@@ -141,9 +141,9 @@ getOnDocumentReadyFunctions: function ()
 //----------------------------------------------------------------------------------------------------
 runOnDocumentReadyFunctions: function ()
 {
-  console.log("23 jan 1:08p")
+  console.log("23 jan 1:23p")
 
-  var funcs = this.getOnDocumentReadyFunctions()
+  var funcs = this.onDocumentReadyFunctions
 
   for (var f = 0; f < funcs.length; f++) {
      console.log("local BrowserViz, calling on ready function");
@@ -300,23 +300,23 @@ start: function ()
 
 }, // start
 //----------------------------------------------------------------------------------------------------
-runOnDocumentReadyFunctions: function()
-{
-  console.log("=== ~/github/browservizjs/browserviz.js, 118p, runOnDocumentReadyFunctions, readyState: " + document.readyState);
-  var hub = this;
-  var onReadyFunctions = this.getOnDocumentReadyFunctions()
-  console.log(" onReadyFunction count: " + onReadyFunctions.length)
-
-  for(var i=0; i < onReadyFunctions.length; i++){
-     var f = onReadyFunctions[i];
-     console.log("about to run next onReady function")
-     f();
-     console.log(" after running next onReady function")
-     }
-
-  console.log("concluding runOnDocumentReadyFunctions")
-
-}  // runOnDocumentReadyFunctions
+//runOnDocumentReadyFunctions: function()
+//{
+//  console.log("=== ~/github/browservizjs/browserviz.js, 118p, runOnDocumentReadyFunctions, readyState: " + document.readyState);
+//  var hub = this;
+//  var onReadyFunctions = this.getOnDocumentReadyFunctions()
+//  console.log(" onReadyFunction count: " + onReadyFunctions.length)
+//
+//  for(var i=0; i < onReadyFunctions.length; i++){
+//     var f = onReadyFunctions[i];
+//     console.log("about to run next onReady function")
+//     f();
+//     console.log(" after running next onReady function")
+//     }
+//
+//  console.log("concluding runOnDocumentReadyFunctions")
+//
+//}  // runOnDocumentReadyFunctions
 //----------------------------------------------------------------------------------------------------
 }; // BrowserViz object
 
