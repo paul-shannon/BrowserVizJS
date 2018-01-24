@@ -115,6 +115,9 @@ setupBasicMessageHandlers: function ()
    var boundGetWindowSize = hub.getWindowSize.bind(hub);
    this.addMessageHandler("getWindowSize",  boundGetWindowSize);
 
+   var boundRoundTripTest = hub.roundTripTest.bind(hub);
+   this.addMessageHandler("getWindowSize",  boundRoundTripTest);
+
 }, // setupBasicMessageHandlers
 //----------------------------------------------------------------------------------------------------
 addOnDocumentReadyFunction: function (func)
@@ -284,6 +287,14 @@ getWindowSize: function (msg)
    this.send(return_msg);
 
 }, // getWindowSize
+//----------------------------------------------------------------------------------------------------
+roundTripTest: function (msg)
+{
+   return_msg = {cmd: msg.callback, status: "success", callback: "", payload: msg.payload}
+
+   this.send(return_msg);
+
+}, // roundTripTest
 //----------------------------------------------------------------------------------------------------
 init: function ()
 {
