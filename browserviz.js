@@ -116,7 +116,7 @@ setupBasicMessageHandlers: function ()
    this.addMessageHandler("getWindowSize",  boundGetWindowSize);
 
    var boundRoundTripTest = hub.roundTripTest.bind(hub);
-   this.addMessageHandler("getWindowSize",  boundRoundTripTest);
+   this.addMessageHandler("roundTripTest",  boundRoundTripTest);
 
 }, // setupBasicMessageHandlers
 //----------------------------------------------------------------------------------------------------
