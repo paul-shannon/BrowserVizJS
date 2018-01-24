@@ -191,7 +191,7 @@ dispatchMessage: function (msg)
 
    if(Object.keys(this.dispatchOptions).indexOf(cmd) == -1){
        console.log("unrecognized socket request: " + msg.cmd);
-       send({"cmd": msg.callback, "status": "error", "callback": "",
+       hub.send({"cmd": msg.callback, "status": "error", "callback": "",
 	     "payload": "browser app does not recognize command '" + msg.cmd + "'"});
        return(false);
       }
