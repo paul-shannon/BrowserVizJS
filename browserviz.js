@@ -146,10 +146,8 @@ runOnDocumentReadyFunctions: function ()
   var funcs = hub.onDocumentReadyFunctions
   console.log(" doc ready functions, count: " + funcs.length)
 
-  debugger;
-
   for (var f = 0; f < funcs.length; f++) {
-     console.log("local BrowserViz, calling on ready function");
+     console.log("browserviz.js, calling on ready function");
      funcs[f]();
      }
 
