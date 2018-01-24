@@ -102,7 +102,6 @@ setupBasicMessageHandlers: function ()
 
    var boundReady = hub.ready.bind(hub)
    this.addMessageHandler("ready", boundReady)
-   //this.addMessageHandler("ready", function(){hub.ready()});
 
    var boundGetBrowserInfo = hub.getBrowserInfo.bind(hub);
    this.addMessageHandler("getBrowserInfo", boundGetBrowserInfo)
@@ -191,7 +190,10 @@ dispatchMessage: function (msg)
    var status = msg.status;
 
    if(Object.keys(this.dispatchOptions).indexOf(cmd) == -1){
-      console.log("unrecognized socket request: " + msg.cmd);
+       console.log("unrecognized socket request: " + msg.cmd);
+       send({"cmd": msg.callback, "status": "error", "callback": "",
+	     "payload": "browser app does not recognize command '" + msg.cmd + "'"});
+       return(false);
       }
    else{
      var funcs = this.dispatchOptions[cmd];
