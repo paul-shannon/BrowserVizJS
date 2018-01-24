@@ -298,6 +298,7 @@ start: function ()
   console.log("=== starting bv.start, state? " + document.readyState);
   var hub = this;
   $(document).ready(this.runOnDocumentReadyFunctions);
+  hub.init()
 
 }, // start
 //----------------------------------------------------------------------------------------------------
