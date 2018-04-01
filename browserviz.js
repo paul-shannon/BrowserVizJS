@@ -301,9 +301,9 @@ roundTripTest: function (msg)
 //----------------------------------------------------------------------------------------------------
 displayHTMLInDiv: function (msg)
 {
-   var text = msg.payload.text;
+   var htmlText = msg.payload.htmlText;
    var divID = msg.payload.divID
-   document.getElementById(divID).innerHTML= text
+   document.getElementById(divID).innerHTML = htmlText
 
    return_msg = {cmd: msg.callback, status: "success", callback: "", payload: msg.payload}
 
