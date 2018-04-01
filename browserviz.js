@@ -268,14 +268,7 @@ setWindowTitle: function (msg)
    var payload = msg.payload;
    console.log(payload)
    var newTitle = payload.title;
-   var proclaim = payload.proclaim;
    window.document.title = newTitle;
-
-   if(proclaim == true){
-      console.log("proclaim: " + proclaim +  "   title: " + newTitle);
-      var html = " &nbsp; <h2 style='margin:50px;'>" + newTitle + " </h2>";
-      document.getElementById("browserVizDiv").innerHTML = html;
-      }
 
    this.send({cmd: msg.callback, status: "success", callback: "", payload: window.document.title});
 
@@ -305,7 +298,7 @@ displayHTMLInDiv: function (msg)
    var divID = msg.payload.divID
    document.getElementById(divID).innerHTML = htmlText
 
-   return_msg = {cmd: msg.callback, status: "success", callback: "", payload: msg.payload}
+   return_msg = {cmd: msg.callback, status: "success", callback: "", payload: ""}
 
    this.send(return_msg);
 
