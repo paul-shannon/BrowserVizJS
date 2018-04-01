@@ -118,6 +118,9 @@ setupBasicMessageHandlers: function ()
    var boundRoundTripTest = hub.roundTripTest.bind(hub);
    this.addMessageHandler("roundTripTest",  boundRoundTripTest);
 
+   var boundDisplayHTMLInDiv = hub.displayHTMLInDiv.bind(hub);
+   this.addMessageHandler("displayHTMLInDiv",  boundDisplayHTMLInDiv);
+
 }, // setupBasicMessageHandlers
 //----------------------------------------------------------------------------------------------------
 addOnDocumentReadyFunction: function (func)
@@ -295,6 +298,18 @@ roundTripTest: function (msg)
    this.send(return_msg);
 
 }, // roundTripTest
+//----------------------------------------------------------------------------------------------------
+displayHTMLInDiv: function (msg)
+{
+   var text = msg.payload.text;
+   var divID = msg.payload.divID
+   document.getElementById(divID).innerHTML= text
+
+   return_msg = {cmd: msg.callback, status: "success", callback: "", payload: msg.payload}
+
+   this.send(return_msg);
+
+}, // displayHTMLInDiv
 //----------------------------------------------------------------------------------------------------
 init: function ()
 {
