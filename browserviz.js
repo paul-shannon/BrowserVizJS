@@ -213,7 +213,7 @@ dispatchMessage: function (msg)
 //----------------------------------------------------------------------------------------------------
 send: function (msg)
 {
-   console.log("=== BrowserViz send: " + msg.cmd);
+   console.log("=== BrowserViz send: " + msg);
    this.socket.send(JSON.stringify(msg));
 
 },  // send
